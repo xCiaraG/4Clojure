@@ -1,0 +1,1 @@
+(fn [l] (filter odd? l))
