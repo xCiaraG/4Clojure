@@ -1,4 +1,2 @@
 (fn [l n] 
-	(if (= 0 n) 
-		(first l) 
-		(recur (rest l) (dec n)))
+	(last (take (+ n 1) l)))

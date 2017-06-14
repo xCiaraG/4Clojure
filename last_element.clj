@@ -1,2 +1,2 @@
 (fn [l] 
-	(nth l (- (count l) 1)))
+	(first (reverse l)))

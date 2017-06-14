@@ -1,7 +1,5 @@
 (fn [l n]
-  (loop [news '() tmpn n tmpl l]
+  (loop [news '() tmpl l]
     (if (empty? tmpl)
-      (reverse news)
-    (if (= 1 tmpn)
-      (recur news n (rest tmpl))
-      (recur (conj news (first tmpl)) (dec tmpn) (rest tmpl))))))
+      (flatten news)
+      (recur (conj (take (- n 1) tmpl) news)(drop n tmpl)))))
