@@ -1,5 +1,4 @@
-(fn [n a b]
-  ( - (+ (reduce + (take-while #(> n %) ((fn tmp1 [tmpa] (cons tmpa (lazy-seq (tmp1 (+ tmpa a))))) a)))
-  (reduce + (take-while #(> n %) ((fn tmp2 [tmpb] (cons tmpb (lazy-seq (tmp2 (+ tmpb b))))) b))))
-    (reduce + (take-while #(> n %) ((fn tmp3 [tmpab] (cons tmpab (lazy-seq (tmp3 (+ tmpab (* a b)))))) (* b a))))))
-;Too slow for big cases
+(fn [n x y]
+  (- (+ (* (/ (quot (- n 1) x) 2) (+ x (* (quot (- n 1) x) x))) 
+        (* (/ (quot (- n 1) y) 2) (+ y (* (quot (- n 1) y) y)))) 
+     (* (/ (quot (- n 1) (* y x)) 2) (+ (* y x) (* (quot (- n 1) (* y x)) (* y x))))))
